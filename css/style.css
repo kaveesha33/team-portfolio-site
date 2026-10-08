@@ -1,1 +1,495 @@
-/* MEMBER 2: global styles, layout, colours, dark mode */
+/* ==========================================
+   GLOBAL RESET & COLOR VARIABLES
+   ========================================== */
+
+:root {
+    --primary-color: #512b96;
+    --primary-hover: #3d1f73;
+
+    --text-dark: #1e1e24;
+    --text-muted: #6c757d;
+
+    --bg-light: #ffffff;
+    --bg-alt: #f6f3fc;
+
+    --card-bg: #ffffff;
+    --border-color: #f0ecf9;
+
+    --font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    --border-radius: 8px;
+}
+
+
+/* ==========================================
+   DARK MODE VARIABLES
+   ========================================== */
+
+body.dark-mode {
+    --text-dark: #f1f1f1;
+    --text-muted: #b8b8b8;
+
+    --bg-light: #121212;
+    --bg-alt: #1c1c1c;
+
+    --card-bg: #242424;
+    --border-color: #383838;
+}
+
+
+/* ==========================================
+   GLOBAL RESET
+   ========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+
+.hero {
+    background:
+        linear-gradient(
+            180deg,
+            #f3ecfd 0%,
+            var(--bg-light) 100%
+        );
+
+    text-align: center;
+    padding: 5rem 1.5rem;
+}
+
+
+body.dark-mode .hero {
+    background:
+        linear-gradient(
+            180deg,
+            #24183a 0%,
+            var(--bg-light) 100%
+        );
+}
+
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+
+.hero h1 span {
+    color: var(--primary-color);
+
+    /* Typing cursor */
+    border-right: 2px solid var(--primary-color);
+
+    padding-right: 3px;
+
+    animation: cursorBlink 0.7s infinite;
+}
+
+
+@keyframes cursorBlink {
+
+    0%,
+    50% {
+        border-color: var(--primary-color);
+    }
+
+    51%,
+    100% {
+        border-color: transparent;
+    }
+}
+
+
+.hero p {
+    color: var(--text-muted);
+    max-width: 600px;
+
+    margin: 0 auto 2rem;
+
+    font-size: 0.95rem;
+}
+
+
+/* ==========================================
+   PRIMARY BUTTON
+   ========================================== */
+
+.btn-primary {
+    display: inline-block;
+
+    background-color: var(--primary-color);
+    color: #ffffff;
+
+    border: none;
+
+    padding: 0.75rem 1.75rem;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   GENERAL SECTION LAYOUT
+   ========================================== */
+
+.section {
+    padding: 4rem 1.5rem;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+
+.section-bg-alt {
+    background-color: var(--bg-alt);
+
+    max-width: 100%;
+
+    padding: 4rem 1.5rem;
+}
+
+
+.section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+.section-title {
+    text-align: center;
+
+    color: var(--primary-color);
+
+    font-size: 1.75rem;
+
+    margin-bottom: 2.5rem;
+}
+
+
+/* ==========================================
+   ABOUT SECTION
+   ========================================== */
+
+.cards-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 1.5rem;
+}
+
+
+.card {
+    background-color: var(--card-bg);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--border-radius);
+
+    padding: 2rem 1.5rem;
+
+    text-align: center;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.card h3 {
+    color: var(--primary-color);
+
+    font-size: 1.1rem;
+
+    margin-bottom: 0.5rem;
+}
+
+
+.card p {
+    color: var(--text-muted);
+
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================
+   TEAM SECTION
+   ========================================== */
+
+.team-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 1.5rem;
+}
+
+
+.team-card {
+    background-color: var(--card-bg);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--border-radius);
+
+    padding: 2rem 1rem;
+
+    text-align: center;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.team-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.avatar-circle {
+    width: 60px;
+    height: 60px;
+
+    background-color: var(--primary-color);
+
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+
+    margin: 0 auto 1rem;
+
+    font-size: 0.95rem;
+}
+
+
+.team-card h4 {
+    color: var(--text-dark);
+
+    font-size: 1rem;
+
+    margin-bottom: 0.25rem;
+}
+
+
+.team-card p {
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+}
+
+
+/* ==========================================
+   CONTACT FORM
+   ========================================== */
+
+.contact-form-container {
+    max-width: 500px;
+
+    margin: 0 auto;
+}
+
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    margin-bottom: 0.4rem;
+
+    color: var(--text-dark);
+}
+
+
+.form-control {
+    width: 100%;
+
+    padding: 0.75rem;
+
+    border:
+        1px solid var(--border-color);
+
+    border-radius: 6px;
+
+    font-size: 0.9rem;
+
+    outline: none;
+
+    background-color: var(--card-bg);
+
+    color: var(--text-dark);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-control:focus {
+    border-color: var(--primary-color);
+
+    box-shadow:
+        0 0 0 2px rgba(81, 43, 150, 0.12);
+}
+
+
+textarea.form-control {
+    resize: vertical;
+
+    min-height: 120px;
+}
+
+
+/* ==========================================
+   FORM VALIDATION MESSAGES
+   ========================================== */
+
+.success-message {
+    color: #28a745;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    margin-top: 0.75rem;
+}
+
+
+.error-message {
+    color: #dc3545;
+
+    font-size: 0.8rem;
+
+    margin-top: 0.25rem;
+}
+
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 4rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .section-bg-alt {
+        padding: 3rem 1rem;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+}
