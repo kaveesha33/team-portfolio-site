@@ -153,74 +153,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+
     /* ==========================================
        3. DARK MODE TOGGLE
        ========================================== */
 
-    const themeButton =
-        document.getElementById(
-            "theme-toggle"
-        );
-
+    const themeButton = document.getElementById("dark-mode-toggle");
 
     if (themeButton) {
 
-        // Load saved theme
-        const savedTheme =
-            localStorage.getItem("theme");
-
+        // Load the saved theme
+        const savedTheme = localStorage.getItem("theme");
 
         if (savedTheme === "dark") {
-
-            document.body.classList.add(
-                "dark-mode"
-            );
-
-            themeButton.textContent = "☀";
-
-        } else {
-
-            themeButton.textContent = "☾";
+            document.body.classList.add("dark-mode");
         }
 
+        // Set the initial button appearance
+        function updateThemeButton() {
+            const darkMode = document.body.classList.contains("dark-mode");
 
-        themeButton.addEventListener(
-            "click",
-            function () {
+            themeButton.textContent = darkMode ? "☀" : "☾";
+            themeButton.setAttribute("aria-pressed", darkMode);
+        }
 
-                document.body.classList.toggle(
-                    "dark-mode"
-                );
+        updateThemeButton();
 
+        // Toggle between light mode and dark mode
+        themeButton.addEventListener("click", function () {
 
-                const darkMode =
-                    document.body.classList.contains(
-                        "dark-mode"
-                    );
+            document.body.classList.toggle("dark-mode");
 
+            const darkMode = document.body.classList.contains("dark-mode");
 
-                if (darkMode) {
+            // Save the selected theme
+            localStorage.setItem("theme", darkMode ? "dark" : "light");
 
-                    localStorage.setItem(
-                        "theme",
-                        "dark"
-                    );
-
-                    themeButton.textContent =
-                        "☀";
-
-                } else {
-
-                    localStorage.setItem(
-                        "theme",
-                        "light"
-                    );
-
-                    themeButton.textContent =
-                        "☾";
-                }
-            }
-        );
+            // Update the button
+            updateThemeButton();
+        });
     }
 
 
